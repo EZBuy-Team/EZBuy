@@ -1,0 +1,1 @@
+This document will be used to track development tasks and internal updates related to the EZBuy project.
