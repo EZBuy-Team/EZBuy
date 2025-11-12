@@ -1,4 +1,3 @@
-// src/components/ProductCard.jsx
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 
@@ -9,7 +8,7 @@ const ProductCard = ({ product }) => {
     <div className="border rounded-lg shadow-sm hover:shadow-md transition p-4 flex flex-col">
       <Link to={`/products/${product.id}`} className="mb-4">
         <img
-          src={product.images[0]} // Access the first image in the array
+          src={product.image_url || 'https://via.placeholder.com/200'}
           alt={product.name}
           className="w-full h-48 object-cover rounded-md"
         />
@@ -17,11 +16,11 @@ const ProductCard = ({ product }) => {
 
       <div className="flex-grow">
         <h3 className="text-lg font-semibold mb-1">{product.name}</h3>
-        <p className="text-gray-600 mb-2 text-sm">{product.category}</p>
+        <p className="text-gray-600 mb-2 text-sm">{product.category_name || product.category}</p>
         <p className="text-gray-900 font-bold">
-          ${product.price.toFixed(2)}{" "}
+          ${parseFloat(product.price).toFixed(2)}{" "}
           <span className="text-green-600 text-sm ml-2">
-            Student: ${product.studentPrice.toFixed(2)}
+            Student: ${parseFloat(product.student_price).toFixed(2)}
           </span>
         </p>
       </div>

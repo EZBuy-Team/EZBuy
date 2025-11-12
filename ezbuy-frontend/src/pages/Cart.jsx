@@ -1,4 +1,3 @@
-// src/pages/Cart.jsx
 import { useCart } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +9,7 @@ const Cart = () => {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-  const studentDiscount = subtotal * 0.3; // 30% discount
+  const studentDiscount = subtotal * 0.3;
   const tax = (subtotal - studentDiscount) * 0.07;
   const shipping = cartItems.length > 0 ? 5 : 0;
   const total = subtotal - studentDiscount + tax + shipping;
@@ -38,13 +37,10 @@ const Cart = () => {
                 className="flex items-center border-b py-4 justify-between"
               >
                 <div className="flex items-center space-x-4">
-                <img
-                    src={item.images?.[0] || item.imageUrl || item.image || 'https://via.placeholder.com/80?text=No+Image'}
+                  <img
+                    src={item.imageUrl || 'https://via.placeholder.com/80'}
                     alt={item.name}
                     className="w-20 h-20 object-cover rounded"
-                    onError={(e) => {
-                      e.target.src = 'https://via.placeholder.com/80?text=No+Image';
-                    }}
                   />
                   <div>
                     <h2 className="font-semibold">{item.name}</h2>
@@ -79,7 +75,6 @@ const Cart = () => {
             ))}
           </div>
 
-          {/* Order Summary */}
           <div className="border rounded-lg p-6 bg-gray-50 shadow-sm">
             <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
             <div className="space-y-2 text-gray-700">

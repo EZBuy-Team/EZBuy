@@ -1,4 +1,3 @@
-// src/context/CartContext.jsx
 import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext();
@@ -6,17 +5,33 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
+  const normalizeProduct = (product) => {
+    return {
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      price: parseFloat(product.price || product.studentPrice || 0),
+      studentPrice: parseFloat(product.student_price || product.studentPrice || product.price || 0),
+      imageUrl: product.image_url || product.imageUrl || product.images?.[0] || '/assets/placeholder.jpg',
+      category: product.category_name || product.category || '',
+      colors: product.colors || [],
+      specs: product.specs || '',
+    };
+  };
+
   const addToCart = (product, quantity = 1) => {
+    const normalized = normalizeProduct(product);
+    
     setCartItems((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
+      const existing = prev.find((item) => item.id === normalized.id);
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id
+          item.id === normalized.id
             ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       }
-      return [...prev, { ...product, quantity }];
+      return [...prev, { ...normalized, quantity }];
     });
   };
 
