@@ -122,23 +122,74 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div className="relative h-[500px] bg-cover bg-center" style={{ backgroundImage: "url('/assets/feature-image.png')" }}>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/70 to-purple-600/60"></div>
-        <div className="relative max-w-7xl mx-auto px-5 h-full flex items-center justify-center">
-          <div className="text-white text-center max-w-3xl">
-            <h1 className="text-6xl font-black mb-6 leading-tight">
-              Student Discount Program
+      <div className="relative min-h-[580px] bg-cover bg-center overflow-hidden mb-8" style={{ backgroundImage: "url('/assets/feature-image.png')" }}>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/75 via-purple-600/70 to-pink-600/65"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-8 py-16 flex items-center min-h-[580px]">
+          <div className="text-white max-w-2xl">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-400 to-pink-500 px-5 py-2.5 rounded-full text-sm font-bold mb-8 shadow-lg">
+              <span className="w-2 h-2 bg-white rounded-full"></span>
+              Student Exclusive Offer
+            </div>
+            
+            <h1 className="text-6xl md:text-7xl font-black mb-5 leading-tight">
+              No Codes.<br/>
+              <span className="bg-gradient-to-r from-yellow-300 via-orange-300 to-pink-300 bg-clip-text text-transparent">
+                Just Savings.
+              </span>
             </h1>
-            <p className="text-2xl mb-8 font-medium">
-              Verify your student status and unlock 30% off on all purchases
+            
+            <p className="text-xl md:text-2xl mb-10 text-white leading-relaxed">
+              Automatic student discounts on everything.<br/>
+              No hunting, no hassle, no expired coupons.
             </p>
-            <div className="flex gap-4 justify-center">
-              <Link to="/verify" className="inline-block bg-orange-500 text-white px-10 py-4 rounded-lg font-bold text-lg hover:bg-orange-600 transition-colors shadow-lg">
-                Verify Student Status
+            
+            <div className="flex gap-4 mb-14">
+              <Link to="/products" className="bg-white text-gray-900 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg">
+                Shop Now →
               </Link>
-              <Link to="/products" className="inline-block bg-white text-gray-900 px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg">
-                Browse Products
+              
+              <Link to="/how-it-works" className="bg-white/20 backdrop-blur-sm border-2 border-white/40 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/30 transition-colors">
+                Learn More
               </Link>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl">
+              <div className="flex items-center gap-3 bg-white/20 backdrop-blur-md rounded-xl p-4 border border-white/30">
+                <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="font-bold text-base">Instant Discount</div>
+                  <div className="text-white/80 text-sm">At Checkout</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 bg-white/20 backdrop-blur-md rounded-xl p-4 border border-white/30">
+                <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="font-bold text-base">Never Expires</div>
+                  <div className="text-white/80 text-sm">Always Active</div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 bg-white/20 backdrop-blur-md rounded-xl p-4 border border-white/30">
+                <div className="w-12 h-12 bg-pink-500 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="font-bold text-base">One-Time Setup</div>
+                  <div className="text-white/80 text-sm">Set & Forget</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
