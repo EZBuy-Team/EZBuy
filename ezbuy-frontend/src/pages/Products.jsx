@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { getAllProducts } from "../services/productService";
 import ProductCard from "../components/ProductCard";
 import CategorySidebar from "../components/CategorySidebar";
@@ -7,6 +8,7 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [loading, setLoading] = useState(true);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -23,11 +25,26 @@ const Products = () => {
     fetchProducts();
   }, []);
 
+  useEffect(() => {
+    const categoryParam = searchParams.get('category');
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [searchParams]);
+
   const categories = ["Electronics", "Accessories", "Audio"];
-  const filtered =
-    selectedCategory === "All"
-      ? products
-      : products.filter((p) => p.category_name === selectedCategory);
+  const searchQuery = searchParams.get('search')?.toLowerCase() || '';
+  
+  let filtered = selectedCategory === "All"
+    ? products
+    : products.filter((p) => p.category_name === selectedCategory);
+
+  if (searchQuery) {
+    filtered = filtered.filter((p) => 
+      p.name.toLowerCase().includes(searchQuery) || 
+      p.description?.toLowerCase().includes(searchQuery)
+    );
+  }
 
   if (loading) {
     return (
